@@ -1,5 +1,6 @@
-# link Shortener - Work in Progress
-A link shortener built with  
+# Link Shortener
+A Super fast concurrent multi link shortener made possible with goroutines
+Built with:
 - React
 - Golang
 - MongoDB
