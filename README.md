@@ -1,5 +1,5 @@
 # Link Shortener
-A Super fast concurrent multi link shortener made possible with goroutines
+A Super fast multi link shortener made possible with a concurrent algorithm
 Built with:
 - React
 - Golang
