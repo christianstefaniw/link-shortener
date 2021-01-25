@@ -1,0 +1,16 @@
+.shortened-item{
+    text-align: center;
+    width: 50ch;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: auto;
+}
+
+#shortened-urls{
+    margin-top: 2rem;
+}
+
+.url-row{
+    padding: 0.7rem;
+}
