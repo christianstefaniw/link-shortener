@@ -16,6 +16,5 @@ func New(){
 		port = "8080" // Default port if not specified
 	}
 	fmt.Printf("Listening on port: %s\n", port)
-	//log.Fatal(http.ListenAndServe("192.168.1.131:"+port, newRouter))
 	log.Fatal(http.ListenAndServe(":"+port, newRouter))
 }

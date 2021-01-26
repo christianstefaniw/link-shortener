@@ -13,7 +13,6 @@ func Router() *mux.Router{
 }
 
 func initRoutes(router *mux.Router){
-
 	staticHandler := http.StripPrefix("/static/", http.FileServer(http.Dir("../client/build/static")))
 	router.PathPrefix("/static/").Handler(staticHandler)
 

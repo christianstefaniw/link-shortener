@@ -4,6 +4,7 @@ import (
 	"../models"
 	"../storage"
 	"context"
+	"fmt"
 	"github.com/gorilla/mux"
 	"go.mongodb.org/mongo-driver/bson"
 	"net/http"
@@ -20,6 +21,6 @@ func RetrieveURL(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(shortUrl + " not found"))
 		return
 	}
-
+	fmt.Println(result.FullURL)
 	http.Redirect(w, r, result.FullURL, http.StatusMovedPermanently)
 }
