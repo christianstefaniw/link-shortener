@@ -14,7 +14,7 @@ func Router() *mux.Router{
 
 func initRoutes(router *mux.Router){
 
-	staticHandler := http.StripPrefix("/static/", http.FileServer(http.Dir("./build/static")))
+	staticHandler := http.StripPrefix("/static/", http.FileServer(http.Dir("../client/build/static")))
 	router.PathPrefix("/static/").Handler(staticHandler)
 
 	router.HandleFunc("/", index).Methods("GET")
@@ -23,5 +23,5 @@ func initRoutes(router *mux.Router){
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "./build/index.html")
+	http.ServeFile(w, r, "../client/build/index.html")
 }

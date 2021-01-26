@@ -7,7 +7,7 @@ export async function shortenLink(links){
 
     return await axios({
         method: 'post',
-        url: 'http://192.168.1.131:8080',
+        url: process.env.REACT_APP_URL,
         data: bodyFormData
     }).then(function (response) {
             return response.data
