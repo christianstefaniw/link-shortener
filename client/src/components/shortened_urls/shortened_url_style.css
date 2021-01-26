@@ -1,9 +1,14 @@
-.shortened-item{
+.full-url{
     text-align: center;
-    width: 50ch;
+    max-width: 50ch;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    margin: auto;
+}
+
+.short-url{
+    text-align: center;
     margin: auto;
 }
 

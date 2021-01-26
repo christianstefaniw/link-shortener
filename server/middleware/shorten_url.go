@@ -64,13 +64,13 @@ func shortenURL(fullURL string, urls *models.URLS, wg *sync.WaitGroup){
 	Prevents races by making sure only one goroutine can access the code block between mutex.Lock() and mutex.Unlock()
 	 */
 	mutex.Lock()
-	if insert(newURL) != nil{
+	if insert(&newURL) != nil{
 		return
 	}
 	urls.Urls = append(urls.Urls, &newURL)
 }
 
-func insert(url models.ShortenedURL) error{
+func insert(url *models.ShortenedURL) error{
 	_, err := storage.Collection.InsertOne(context.Background(), url)
 	return err
 }

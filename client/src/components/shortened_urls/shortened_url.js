@@ -9,10 +9,10 @@ class ShortenedUrl extends Component{
         return (
             <Row className="justify-content-between url-row" style={{backgroundColor: this.props.backgroundColor}}>
                 <Col>
-                    <p className="shortened-item">{this.props.link['FullURL']}</p>
+                    <p className="full-url">{this.props.link['FullURL']}</p>
                 </Col>
                 <Col>
-                    <p className="shortened-item">{`http://localhost:8080/${this.props.link['ShortURL']}`}</p>
+                    <p className="short-url">{`http://192.168.1.131:8080/${this.props.link['ShortURL']}`}</p>
                 </Col>
 
             </Row>
