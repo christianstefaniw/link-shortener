@@ -4,9 +4,3 @@ Built with:
 - React
 - Golang
 - MongoDB
-
-### Instructions
-```
-cd server
-go run .
-```
