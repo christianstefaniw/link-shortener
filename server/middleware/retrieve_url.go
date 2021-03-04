@@ -4,8 +4,7 @@ import (
 	"../models"
 	"../storage"
 	"context"
-	"fmt"
-	"github.com/gorilla/mux"
+	"github.com/ChristianStefaniw/cgr"
 	"go.mongodb.org/mongo-driver/bson"
 	"net/http"
 )
@@ -13,7 +12,7 @@ import (
 
 func RetrieveURL(w http.ResponseWriter, r *http.Request) {
 	var result models.ShortenedURL
-	shortUrl := mux.Vars(r)["url"]
+	shortUrl := cgr.GetVars(r)["url"]
 
 	filter := bson.M{"shorturl": shortUrl}
 	if err := storage.Collection.FindOne(context.Background(), filter).Decode(&result); err != nil {
@@ -21,6 +20,5 @@ func RetrieveURL(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(shortUrl + " not found"))
 		return
 	}
-	fmt.Println(result.FullURL)
 	http.Redirect(w, r, result.FullURL, http.StatusMovedPermanently)
 }

@@ -2,25 +2,24 @@ package router
 
 import (
 	"../middleware"
-	"github.com/gorilla/mux"
+	"github.com/ChristianStefaniw/cgr"
 	"net/http"
 )
 
-func Router() *mux.Router{
-	router := mux.NewRouter()
+func Router() *cgr.Router{
+	router := cgr.NewRouter()
 	initRoutes(router)
 	return router
 }
 
-func initRoutes(router *mux.Router){
-	staticHandler := http.StripPrefix("/static/", http.FileServer(http.Dir("../client/build/static")))
-	router.PathPrefix("/static/").Handler(staticHandler)
-
-	router.HandleFunc("/", index).Methods("GET")
-	router.HandleFunc("/{url}", middleware.RetrieveURL).Methods("GET")
-	router.HandleFunc("/", middleware.ShortenURL).Methods("POST")
-}
-
-func index(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "../client/build/index.html")
+func initRoutes(router *cgr.Router){
+	router.Route("/lnk/:url").Handler(middleware.RetrieveURL).Method("GET").Insert(router)
+	router.Route("/").Handler(middleware.ShortenURL).Method("POST").Insert(router)
+	router.Route("/routes").Method("GET").Handler(
+		func(writer http.ResponseWriter, request *http.Request) {
+			for _, route := range router.ViewRouteTree() {
+				writer.Write([]byte(route))
+			}
+		},
+	).Insert(router)
 }

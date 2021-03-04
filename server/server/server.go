@@ -2,11 +2,8 @@ package server
 
 import (
 	"../router"
-	"fmt"
-	"log"
+	"github.com/ChristianStefaniw/cgr"
 	"os"
-
-	"net/http"
 )
 
 func New(){
@@ -15,6 +12,5 @@ func New(){
 	if port == "" {
 		port = "8080" // Default port if not specified
 	}
-	fmt.Printf("Listening on port: %s\n", port)
-	log.Fatal(http.ListenAndServe(":"+port, newRouter))
+	cgr.Run(port, newRouter)
 }
