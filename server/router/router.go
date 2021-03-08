@@ -13,7 +13,7 @@ func Router() *cgr.Router{
 }
 
 func initRoutes(router *cgr.Router){
-	router.Route("/lnk/:url").Handler(middleware.RetrieveURL).Method("GET").Insert(router)
+	router.Route("/:url").Handler(middleware.RetrieveURL).Method("GET").Insert(router)
 	router.Route("/").Handler(middleware.ShortenURL).Method("POST").Insert(router)
 	router.Route("/routes").Method("GET").Handler(
 		func(writer http.ResponseWriter, request *http.Request) {

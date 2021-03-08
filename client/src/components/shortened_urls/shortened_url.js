@@ -12,7 +12,7 @@ class ShortenedUrl extends Component{
                     <p className="full-url">{this.props.link['FullURL']}</p>
                 </Col>
                 <Col>
-                    <p className="short-url">{`${process.env.REACT_APP_URL}/lnk/${this.props.link['ShortURL']}`}</p>
+                    <p className="short-url">{`${process.env.REACT_APP_URL}/${this.props.link['ShortURL']}`}</p>
                 </Col>
 
             </Row>

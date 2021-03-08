@@ -12,7 +12,7 @@ import (
 
 func RetrieveURL(w http.ResponseWriter, r *http.Request) {
 	var result models.ShortenedURL
-	shortUrl := cgr.GetVars(r)["url"]
+	shortUrl := cgr.GetParams(r)["url"]
 
 	filter := bson.M{"shorturl": shortUrl}
 	if err := storage.Collection.FindOne(context.Background(), filter).Decode(&result); err != nil {
