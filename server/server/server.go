@@ -7,10 +7,10 @@ import (
 )
 
 func New(){
-	newRouter := router.Router()
+	r := router.Router()
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080" // Default port if not specified
 	}
-	cgr.Run(port, newRouter)
+	cgr.Run(port, r)
 }

@@ -1,7 +1,7 @@
 package router
 
 import (
-	"../middleware"
+	"../handlers"
 	"github.com/ChristianStefaniw/cgr"
 	"net/http"
 )
@@ -13,13 +13,13 @@ func Router() *cgr.Router{
 }
 
 func initRoutes(router *cgr.Router){
-	router.Route("/:url").Handler(middleware.RetrieveURL).Method("GET").Insert(router)
-	router.Route("/").Handler(middleware.ShortenURL).Method("POST").Insert(router)
+	router.Route("/:url").Handler(handlers.RetrieveURL).Method("GET").Insert()
+	router.Route("/").Handler(handlers.ShortenURL).Method("POST").Insert()
 	router.Route("/routes").Method("GET").Handler(
 		func(writer http.ResponseWriter, request *http.Request) {
 			for _, route := range router.ViewRouteTree() {
 				writer.Write([]byte(route))
 			}
 		},
-	).Insert(router)
+	).Insert()
 }
